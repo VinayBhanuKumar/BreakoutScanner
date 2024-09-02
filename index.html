@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Table</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Stock Table</h1>
+    <table id="stockTable">
+        <thead>
+            <tr>
+                <th>Stock Name</th>
+                <th>Price</th>
+                <th>Change</th>
+                <th>Volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <!-- JSON data embedded directly within the HTML -->
+    <script type="application/json" id="data">
+    [
+        {
+            "name": "Stock Y",
+            "price": "100",
+            "change": "+1.5%",
+            "volume": "1500"
+        },
+        {
+            "name": "Stock B",
+            "price": "200",
+            "change": "-0.5%",
+            "volume": "3000"
+        },
+        {
+            "name": "Stock C",
+            "price": "150",
+            "change": "+2.0%",
+            "volume": "2000"
+        }
+    ]
+    </script>
+
+    <!-- JavaScript to parse JSON and populate the table -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const jsonData = document.getElementById('data').textContent;
+            const data = JSON.parse(jsonData);
+
+            const tableBody = document.getElementById('stockTable').getElementsByTagName('tbody')[0];
+
+            data.forEach(stock => {
+                let row = tableBody.insertRow();
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                cell1.textContent = stock.name;
+                cell2.textContent = stock.price;
+                cell3.textContent = stock.change;
+                cell4.textContent = stock.volume;
+            });
+        });
+    </script>
+</body>
+</html>

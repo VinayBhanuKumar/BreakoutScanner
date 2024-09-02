@@ -1,0 +1,12 @@
+table {
+    width: 20%;
+    border-collapse: collapse; /* Ensures that borders are merged for cleaner look */
+}
+th, td {
+    border: 1px solid black; /* Border for each cell */
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2; /* Light grey background for table headers */
+}
